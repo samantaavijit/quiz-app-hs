@@ -1,0 +1,15 @@
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0px !important;
+  border-right: 0px !important;
+  border-bottom: 0px !important;
+  border-left: 0px !important;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: #1619eeef !important;
+  font-weight: 700;
+}

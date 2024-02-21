@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./admin.css";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import Loader from "../../utils/loader/Loader";
@@ -14,6 +14,12 @@ export default function AdminLogin() {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("admin_token")) {
+      navigate("/admin/dashboard");
+    }
+  }, []);
 
   const handleOnChange = (e) => {
     let { name, value } = e.target;

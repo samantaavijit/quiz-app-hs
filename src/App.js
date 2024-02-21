@@ -58,23 +58,34 @@ export default function App() {
                       </AdminLayout>
                     }
                   />
+                  <Route
+                    path="/home"
+                    element={
+                      <AdminLayout>
+                        <Dashboard />
+                      </AdminLayout>
+                    }
+                  />
+                  <Route
+                    path="/about-us"
+                    element={
+                      <AdminLayout>
+                        <Login />
+                      </AdminLayout>
+                    }
+                  />
+                  <Route
+                    path="/contact-us"
+                    element={
+                      <AdminLayout>
+                        <Dashboard />
+                      </AdminLayout>
+                    }
+                  />
                 </Route>
               </Routes>
             }
           />
-
-          {/* <Route path="/admin" element={<AdminLogin />}>
-            <Route path="*" element={<AdminProtectRoute />}>
-              <Route
-                path="/dashboard"
-                element={
-                  <AdminLayout>
-                    <AdminDashboard />
-                  </AdminLayout>
-                }
-              />
-            </Route>
-          </Route> */}
 
           {/* 
       <Route element={<ProtectRoute />}>
