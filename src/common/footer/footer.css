@@ -1,0 +1,62 @@
+.footer {
+  background-color: #929fba;
+  align-items: center;
+  padding: 20px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* .social-icons svg {
+  font-size: 24px;
+  margin: 0 10px;
+} */
+
+.facebook {
+  background-color: #3b5998;
+}
+.twitter {
+  background-color: #55acee;
+}
+.google {
+  background-color: #dd4b39;
+}
+.instagram {
+  background-color: #ac2bac;
+}
+.linkedin {
+  background-color: #0082ca;
+}
+.github {
+  background-color: #333333;
+}
+
+.circle-icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+/* .circle-icon:hover {
+  background-color: #304e8e; 
+} */
+
+@media (max-width: 767px) {
+  .social-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* .social-icons svg {
+    margin: 5px;
+  } */
+}

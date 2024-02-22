@@ -26,13 +26,21 @@ export default function AdminHeader() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="nav-link" to="/admin/home" exact>
+            <NavLink className="nav-link" to="/admin/home" exact={`${true}`}>
               Home
             </NavLink>
-            <NavLink className="nav-link" to="/admin/about-us" exact>
+            <NavLink
+              className="nav-link"
+              to="/admin/about-us"
+              exact={`${true}`}
+            >
               About Us
             </NavLink>
-            <NavLink className="nav-link" to="/admin/contact-us" exact>
+            <NavLink
+              className="nav-link"
+              to="/admin/contact-us"
+              exact={`${true}`}
+            >
               Contact Us
             </NavLink>
           </Nav>
