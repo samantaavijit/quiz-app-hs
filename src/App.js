@@ -12,6 +12,8 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import { ToastContainer } from "react-toastify";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLayout from "./common/layout/AdminLayout";
+import UserLayout from "./common/layout/UserLayout";
+import Register from "./pages/auth/Register";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -39,8 +41,30 @@ export default function App() {
       />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={
+              <UserLayout>
+                <Login />
+              </UserLayout>
+            }
+          />
+          <Route
+            path="/registration"
+            element={
+              <UserLayout>
+                <Register />
+              </UserLayout>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <UserLayout>
+                <Dashboard />
+              </UserLayout>
+            }
+          />
 
           {/* ONLY FOR ADMIN  */}
 

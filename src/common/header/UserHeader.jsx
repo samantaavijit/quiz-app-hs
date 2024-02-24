@@ -3,7 +3,7 @@ import "./header.css";
 import { Navbar, Container, Nav, NavDropdown, Image } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 
-export default function AdminHeader() {
+export default function UserHeader() {
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Set to true for testing
   const [userName, setUserName] = useState("John Doe"); // User's name
 
@@ -15,7 +15,7 @@ export default function AdminHeader() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/admin/home">
+        <Navbar.Brand href="#home">
           <img
             src="https://avatars.githubusercontent.com/u/67010969?v=4"
             height="30"
@@ -64,11 +64,8 @@ export default function AdminHeader() {
                 <NavLink className="dropdown-item" to="/profile">
                   <i className="fas fa-user" /> Profile
                 </NavLink>
-                <NavLink className="dropdown-item" to="/admin/dashboard">
+                <NavLink className="dropdown-item" to="/dashboard">
                   <i className="fas fa-cog" /> Dashboard
-                </NavLink>
-                <NavLink className="dropdown-item" to="/settings">
-                  <i className="fas fa-cog" /> Settings
                 </NavLink>
 
                 <NavDropdown.Divider />
