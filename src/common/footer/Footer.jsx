@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./footer.css";
 
-export default function AdminFooter() {
+export default function Footer() {
   return (
     <footer className="footer">
       <Container>

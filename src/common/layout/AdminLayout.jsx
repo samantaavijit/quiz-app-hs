@@ -1,13 +1,13 @@
 import React from "react";
 import AdminHeader from "../header/AdminHeader";
-import AdminFooter from "../footer/AdminFooter";
+import Footer from "../footer/Footer";
 
 export default function AdminLayout({ children }) {
   return (
     <>
       <AdminHeader />
       {children}
-      <AdminFooter />
+      <Footer />
     </>
   );
 }
