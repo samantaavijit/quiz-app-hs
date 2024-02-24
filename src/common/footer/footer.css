@@ -2,6 +2,10 @@
   background-color: #929fba;
   align-items: center;
   padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .social-icons {
@@ -9,11 +13,6 @@
   justify-content: center;
   gap: 10px;
 }
-
-/* .social-icons svg {
-  font-size: 24px;
-  margin: 0 10px;
-} */
 
 .facebook {
   background-color: #3b5998;
@@ -46,17 +45,9 @@
   text-decoration: none !important;
 }
 
-/* .circle-icon:hover {
-  background-color: #304e8e; 
-} */
-
 @media (max-width: 767px) {
   .social-icons {
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  /* .social-icons svg {
-    margin: 5px;
-  } */
 }

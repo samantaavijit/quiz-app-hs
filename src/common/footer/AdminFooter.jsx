@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import "./footer.css";
 
 export default function AdminFooter() {
@@ -12,10 +12,15 @@ export default function AdminFooter() {
             md={6}
             className="text-md-start text-center mb-3 mb-md-0"
           >
-            &copy; 2024 Your Company
+            &copy; {new Date().getFullYear()}
           </Col>
           <Col xs={12} md={6} className="text-md-end text-center">
             <div className="social-icons">
+              <CircleIcon
+                color="google"
+                url="https://maps.app.goo.gl/Tx8cNojxAbbLvEa76"
+                icon="fa-solid fa-location-dot"
+              />
               <CircleIcon
                 color="facebook"
                 url="tel:+91 8145263799"
@@ -31,9 +36,11 @@ export default function AdminFooter() {
                 url="mailto:samantaavijit.2000@gmail.com"
                 icon="fa-solid fa-envelope"
               />
+
               <CircleIcon
                 color="facebook"
-                url="https://www.facebook.com/avijit.samanta.12914/"
+                // url="https://www.facebook.com/avijit.samanta.12914/"
+                url="https://www.facebook.com/"
                 icon="fa-brands fa-facebook-f"
               />
               <CircleIcon
