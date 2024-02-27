@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./admin.css";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import Loader from "../../utils/loader/Loader";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axios from "../../utils/helpers/axios";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -34,25 +33,26 @@ export default function AdminLogin() {
 
     setLoading(true);
 
-    let { email, password } = userData;
-
-    signInWithEmailAndPassword(auth, email, password)
+    axios
+      .post("/auth/admin-login", userData)
+      // .post("/auth/admin-signup", userData)
       .then((res) => {
         setLoading(false);
-        const { idToken } = res._tokenResponse;
-        const token = idToken;
-        localStorage.setItem("admin_token", token);
-        localStorage.setItem(
-          "admin_details",
-          JSON.stringify(res._tokenResponse)
-        );
-        navigate("/admin/dashboard");
+
+        if (res.data.success) {
+          toast.success(res.data.message);
+          let { token, userDetails } = res.data;
+          localStorage.setItem("admin_token", token);
+          localStorage.setItem("admin_details", JSON.stringify(userDetails));
+          window.location.reload();
+        } else {
+          toast.error(res.data.message);
+        }
       })
-      .catch((error) => {
+      .catch((err) => {
         setLoading(false);
-        const errorMessage = error.message;
-        console.error(errorMessage);
-        toast.error(errorMessage);
+        console.error(err);
+        toast.error("Something Went Wrong!!");
       });
   };
 
