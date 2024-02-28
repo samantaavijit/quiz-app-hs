@@ -84,6 +84,7 @@ export default function AddQuestion() {
         if (res.data.success) {
           toast.success(res.data.message);
           setFormData({
+            c_id: "",
             question: "",
             optionA: "",
             optionB: "",
