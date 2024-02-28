@@ -13,6 +13,8 @@ import { ToastContainer } from "react-toastify";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLayout from "./common/layout/AdminLayout";
 import UserLayout from "./common/layout/UserLayout";
+import AddChapter from "./pages/admin/AddChapter";
+import AddQuestion from "./pages/admin/AddQuestion";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -75,26 +77,18 @@ export default function App() {
                     }
                   />
                   <Route
-                    path="/home"
+                    path="/add-chapter"
                     element={
                       <AdminLayout>
-                        <Dashboard />
+                        <AddChapter />
                       </AdminLayout>
                     }
                   />
                   <Route
-                    path="/about-us"
+                    path="/add-question"
                     element={
                       <AdminLayout>
-                        <Login />
-                      </AdminLayout>
-                    }
-                  />
-                  <Route
-                    path="/contact-us"
-                    element={
-                      <AdminLayout>
-                        <Dashboard />
+                        <AddQuestion />
                       </AdminLayout>
                     }
                   />

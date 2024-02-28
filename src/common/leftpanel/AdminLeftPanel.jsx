@@ -55,6 +55,15 @@ export default function AdminLeftPanel() {
                 Add Chapter
               </NavLink>
             </Nav.Item>
+
+            <Nav.Item as="li">
+              <NavLink to="/admin/add-question" exact={`${true}`}>
+                <span className="pro-icon-wrapper">
+                  <i className="fa-solid fa-gears" />
+                </span>
+                Add Question
+              </NavLink>
+            </Nav.Item>
           </Nav>
         </div>
       </div>
