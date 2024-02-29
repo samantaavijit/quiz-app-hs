@@ -15,6 +15,7 @@ import AdminLayout from "./common/layout/AdminLayout";
 import UserLayout from "./common/layout/UserLayout";
 import AddChapter from "./pages/admin/AddChapter";
 import AddQuestion from "./pages/admin/AddQuestion";
+import TopicWiseQuestion from "./pages/topicwisequestion/TopicWiseQuestion";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -51,6 +52,7 @@ export default function App() {
             }
           />
 
+          {/* <Route element={<ProtectRoute />}> */}
           <Route
             path="/dashboard"
             element={
@@ -59,6 +61,15 @@ export default function App() {
               </UserLayout>
             }
           />
+          <Route
+            path="/topic-wise-questions/:topic"
+            element={
+              <UserLayout>
+                <TopicWiseQuestion />
+              </UserLayout>
+            }
+          />
+          {/* </Route> */}
 
           {/* ONLY FOR ADMIN  */}
 
@@ -96,18 +107,6 @@ export default function App() {
               </Routes>
             }
           />
-
-          {/* 
-      <Route element={<ProtectRoute />}>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Dashboard />
-            </Layout>
-          }
-        />
-      </Route> */}
         </Routes>
       </BrowserRouter>
     </div>

@@ -26,22 +26,8 @@ export default function UserHeader() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="nav-link" to="/admin/home" exact={`${true}`}>
+            <NavLink className="nav-link" to="/dashboard" exact={`${true}`}>
               Home
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/admin/about-us"
-              exact={`${true}`}
-            >
-              About Us
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/admin/contact-us"
-              exact={`${true}`}
-            >
-              Contact Us
             </NavLink>
           </Nav>
           <Nav>
@@ -74,7 +60,7 @@ export default function UserHeader() {
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <Link to="/admin" type="button" className="btn btn-primary">
+              <Link to="/" type="button" className="btn btn-primary">
                 Login
               </Link>
             )}
