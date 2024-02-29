@@ -18,6 +18,7 @@ export default function AdminLogin() {
     if (localStorage.getItem("admin_token")) {
       navigate("/admin/dashboard");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOnChange = (e) => {
