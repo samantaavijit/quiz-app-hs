@@ -29,6 +29,13 @@ export default function UserHeader() {
             <NavLink className="nav-link" to="/dashboard" exact={`${true}`}>
               Home
             </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/show-quiz-topic"
+              exact={`${true}`}
+            >
+              Quiz
+            </NavLink>
           </Nav>
           <Nav>
             {isLoggedIn ? (
