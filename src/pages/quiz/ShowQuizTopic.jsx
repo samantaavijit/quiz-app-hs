@@ -55,7 +55,7 @@ export default function ShowQuizTopic() {
         backdrop="static"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Chhose Marks</Modal.Title>
+          <Modal.Title>Choose Marks</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Select
