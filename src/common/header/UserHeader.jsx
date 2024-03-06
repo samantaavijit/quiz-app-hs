@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./header.css";
 import { Navbar, Container, Nav, NavDropdown, Image } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function UserHeader() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Set to true for testing
-  const [userName, setUserName] = useState("John Doe"); // User's name
+  const [userDetails, setUserDetails] = useState({});
+
+  useEffect(() => {
+    let userDetails = localStorage.getItem("userDetails");
+
+    if (userDetails) {
+      userDetails = JSON.parse(userDetails);
+      setUserDetails(userDetails);
+    }
+  }, []);
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserName("");
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      window.location.pathname = "/login";
+      toast.done(aa);
+    }, 1500);
   };
 
   return (
@@ -38,13 +52,13 @@ export default function UserHeader() {
             </NavLink>
           </Nav>
           <Nav>
-            {isLoggedIn ? (
+            {localStorage.getItem("token") ? (
               <NavDropdown
                 title={
                   <>
-                    {userName}
+                    {userDetails.name}
                     <Image
-                      src="https://avatars.githubusercontent.com/u/67010969?v=4"
+                      src={userDetails.avatar}
                       roundedCircle
                       width="30"
                       height="30"

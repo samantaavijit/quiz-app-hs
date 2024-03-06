@@ -54,40 +54,40 @@ export default function App() {
             }
           />
 
-          {/* <Route element={<ProtectRoute />}> */}
-          <Route
-            path="/dashboard"
-            element={
-              <UserLayout>
-                <Dashboard />
-              </UserLayout>
-            }
-          />
-          <Route
-            path="/topic-wise-questions/:topic"
-            element={
-              <UserLayout>
-                <TopicWiseQuestion />
-              </UserLayout>
-            }
-          />
-          <Route
-            path="/show-quiz-topic"
-            element={
-              <UserLayout>
-                <ShowQuizTopic />
-              </UserLayout>
-            }
-          />
-          <Route
-            path="/start-quiz"
-            element={
-              <UserLayout>
-                <StartQuiz />
-              </UserLayout>
-            }
-          />
-          {/* </Route> */}
+          <Route element={<ProtectRoute />}>
+            <Route
+              path="/dashboard"
+              element={
+                <UserLayout>
+                  <Dashboard />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/topic-wise-questions/:topic"
+              element={
+                <UserLayout>
+                  <TopicWiseQuestion />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/show-quiz-topic"
+              element={
+                <UserLayout>
+                  <ShowQuizTopic />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/start-quiz"
+              element={
+                <UserLayout>
+                  <StartQuiz />
+                </UserLayout>
+              }
+            />
+          </Route>
 
           {/* ONLY FOR ADMIN  */}
 
