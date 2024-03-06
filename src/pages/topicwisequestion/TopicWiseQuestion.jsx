@@ -92,15 +92,17 @@ export default function TopicWiseQuestion() {
         })}
       </Row>
 
-      <Button
-        className="m-5"
-        onClick={() => {
-          getAllQuestions(lastKey);
-        }}
-        disabled={!isMore}
-      >
-        View More
-      </Button>
+      {allQuestions.length > 0 && (
+        <Button
+          className="m-5"
+          onClick={() => {
+            getAllQuestions(lastKey);
+          }}
+          disabled={!isMore}
+        >
+          View More
+        </Button>
+      )}
     </Container>
   );
 }
