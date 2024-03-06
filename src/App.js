@@ -18,6 +18,7 @@ import AddQuestion from "./pages/admin/AddQuestion";
 import TopicWiseQuestion from "./pages/topicwisequestion/TopicWiseQuestion";
 import ShowQuizTopic from "./pages/quiz/ShowQuizTopic";
 import StartQuiz from "./pages/quiz/StartQuiz";
+import Users from "./pages/admin/Users";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -118,6 +119,14 @@ export default function App() {
                     element={
                       <AdminLayout>
                         <AddQuestion />
+                      </AdminLayout>
+                    }
+                  />
+                  <Route
+                    path="/users"
+                    element={
+                      <AdminLayout>
+                        <Users />
                       </AdminLayout>
                     }
                   />

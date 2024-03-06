@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import "./header.css";
 import { Navbar, Container, Nav, NavDropdown, Image } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function AdminHeader() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Set to true for testing
-  const [userName, setUserName] = useState("John Doe"); // User's name
-
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserName("");
+    const aa = toast.loading("Please Wait");
+
+    setTimeout(() => {
+      localStorage.clear();
+      window.location.pathname = "/admin";
+      toast.done(aa);
+    }, 1500);
   };
 
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/admin/home">
+        <Navbar.Brand href="/admin/dashboard">
           <img
             src="https://avatars.githubusercontent.com/u/67010969?v=4"
             height="30"
@@ -26,30 +29,24 @@ export default function AdminHeader() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="nav-link" to="/admin/home" exact={`${true}`}>
+            <NavLink
+              className="nav-link"
+              to="/admin/dashboard"
+              exact={`${true}`}
+            >
               Home
             </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/admin/about-us"
-              exact={`${true}`}
-            >
-              About Us
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/admin/contact-us"
-              exact={`${true}`}
-            >
-              Contact Us
+
+            <NavLink className="nav-link" to="/admin/users" exact={`${true}`}>
+              Users
             </NavLink>
           </Nav>
           <Nav>
-            {isLoggedIn ? (
+            {localStorage.getItem("admin_token") ? (
               <NavDropdown
                 title={
                   <>
-                    {userName}
+                    Admin
                     <Image
                       src="https://avatars.githubusercontent.com/u/67010969?v=4"
                       roundedCircle
