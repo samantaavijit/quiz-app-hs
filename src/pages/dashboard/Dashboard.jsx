@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { Col, Container, Row } from "react-bootstrap";
 import Loader from "../../utils/loader/Loader";
 import { Link } from "react-router-dom";
+import { config } from "../../utils/helpers/token.config";
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ export default function Dashboard() {
   const getAllChatpers = () => {
     setLoading(true);
     axios
-      .get("/question/all-chapters")
+      .get("/question/all-chapters", config())
       .then((res) => {
         setLoading(false);
 
