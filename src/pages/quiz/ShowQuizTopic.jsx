@@ -5,6 +5,7 @@ import axios from "../../utils/helpers/axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { all_chapter } from "../../assets/images";
+import { config } from "../../utils/helpers/token.config";
 
 export default function ShowQuizTopic() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function ShowQuizTopic() {
   const getAllChatpers = () => {
     setLoading(true);
     axios
-      .get("/question/all-chapters")
+      .get("/question/all-chapters", config())
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
@@ -117,29 +118,31 @@ export default function ShowQuizTopic() {
               </Col>
             );
           })}
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <Link
-              to="#"
-              onClick={() => {
-                setModalOpen(true);
-                setTopic({
-                  name: "All Chapters",
-                  c_id: "all_chapters",
-                });
-              }}
-            >
-              <div className="card-flyer">
-                <div className="text-box">
-                  <div className="image-box">
-                    <img src={all_chapter} alt="All Chapters" />
-                  </div>
-                  <div className="text-container">
-                    <h6>All Chapters</h6>
+          {allChapters.length > 0 && (
+            <Col xs={12} sm={6} md={3} lg={3}>
+              <Link
+                to="#"
+                onClick={() => {
+                  setModalOpen(true);
+                  setTopic({
+                    name: "All Chapters",
+                    c_id: "all_chapters",
+                  });
+                }}
+              >
+                <div className="card-flyer">
+                  <div className="text-box">
+                    <div className="image-box">
+                      <img src={all_chapter} alt="All Chapters" />
+                    </div>
+                    <div className="text-container">
+                      <h6>All Chapters</h6>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          </Col>
+              </Link>
+            </Col>
+          )}
         </Row>
       </Container>
     </div>
