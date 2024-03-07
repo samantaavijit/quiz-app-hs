@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "../../utils/helpers/axios";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Loader from "../../utils/loader/Loader";
+import { config } from "../../utils/helpers/token.config";
 
 export default function StartQuiz() {
   const [loading, setLoading] = useState(false);
@@ -43,13 +44,16 @@ export default function StartQuiz() {
 
     axios
       .get(
-        `/question/get-quiz-question?topic_id=${topic_id}&totalQuestions=${totalQuestions}`
+        `/question/get-quiz-question?topic_id=${topic_id}&totalQuestions=${totalQuestions}`,
+        config()
       )
       .then((res) => {
         setLoading(false);
         if (res.data.success) {
           let { questions } = res.data;
           setAllQuestions(questions);
+        } else {
+          toast.error(res.data.message);
         }
       })
       .catch((err) => {
