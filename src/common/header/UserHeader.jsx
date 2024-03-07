@@ -21,7 +21,7 @@ export default function UserHeader() {
 
     setTimeout(() => {
       localStorage.clear();
-      window.location.pathname = "/login";
+      window.location.pathname = "/";
       toast.done(aa);
     }, 1500);
   };
@@ -29,7 +29,7 @@ export default function UserHeader() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/dashboard">
           <img
             src="https://avatars.githubusercontent.com/u/67010969?v=4"
             height="30"
