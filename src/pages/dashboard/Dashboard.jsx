@@ -6,6 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Loader from "../../utils/loader/Loader";
 import { Link } from "react-router-dom";
 import { config } from "../../utils/helpers/token.config";
+import { BUCKET_DOMAIN } from "../../utils/helpers/Helper";
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(false);
@@ -50,7 +51,10 @@ export default function Dashboard() {
                   <div className="card-flyer">
                     <div className="text-box">
                       <div className="image-box">
-                        <img src={item.thumbnail} alt={item.name} />
+                        <img
+                          src={BUCKET_DOMAIN + item.thumbnail}
+                          alt={item.name}
+                        />
                       </div>
                       <div className="text-container">
                         <h6>{item.name}</h6>

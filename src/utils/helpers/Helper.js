@@ -8,3 +8,5 @@ export const getChapterId = (text) => {
   text = text.replace(/ /g, "_");
   return text;
 };
+export const BUCKET_DOMAIN =
+  "https://firebasestorage.googleapis.com/v0/b/avijitsamanta-class12.appspot.com/o/";
