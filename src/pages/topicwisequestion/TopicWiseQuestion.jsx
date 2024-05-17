@@ -9,46 +9,37 @@ import "./question.css";
 
 export default function TopicWiseQuestion() {
   const per_page = 20;
+  const queryParams = new URLSearchParams(window.location.search);
 
   const optionsSymbol = ["A", "B", "C", "D"];
 
   const [loading, setLoading] = useState(false);
-  const [isMore, setIsMore] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
-  const [lastKey, setLastKey] = useState("");
-
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
   const topic = useParams()?.topic;
+  const topic_name = queryParams.get("topic_name");
 
   useEffect(() => {
     getAllQuestions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [topic]);
+  }, [topic, page]);
 
-  const getAllQuestions = (startAtKey = "") => {
+  const getAllQuestions = () => {
     setLoading(true);
 
     axios
       .get(
-        `/question/topic-wise-question/${topic}?per_page=${per_page}&startAtKey=${startAtKey}`,
+        `/question/topic-wise-question/${topic}?per_page=${per_page}&page=${page}`,
         config()
       )
       .then((res) => {
         setLoading(false);
 
         if (res.data.success) {
-          let { questions, startAtKey } = res.data;
-
-          let values = Object.values(questions);
-
-          if (startAtKey === lastKey) {
-            setIsMore(false);
-          } else {
-            values.pop();
-          }
-
-          setAllQuestions([...allQuestions.concat(values)]);
-
-          setLastKey(startAtKey);
+          let { questions, total } = res.data;
+          setAllQuestions([...allQuestions.concat(questions)]);
+          setTotal(total);
         } else {
           toast.error(res.data.message);
         }
@@ -64,7 +55,7 @@ export default function TopicWiseQuestion() {
     <Container>
       {loading && <Loader />}
 
-      <h1>Topic Name Questions</h1>
+      <h1>{topic_name} Questions</h1>
 
       <Row className="py-5">
         {allQuestions.map((item, key) => {
@@ -96,9 +87,9 @@ export default function TopicWiseQuestion() {
         <Button
           className="m-5"
           onClick={() => {
-            getAllQuestions(lastKey);
+            setPage(page + 1);
           }}
-          disabled={!isMore}
+          disabled={page * per_page >= total}
         >
           View More
         </Button>

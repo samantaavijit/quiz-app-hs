@@ -47,7 +47,9 @@ export default function Dashboard() {
           {allChapters.map((item, key) => {
             return (
               <Col xs={12} sm={6} md={3} lg={3} key={key}>
-                <Link to={`/topic-wise-questions/${item.c_id}`}>
+                <Link
+                  to={`/topic-wise-questions/${item.c_id}?topic_name=${item.name}`}
+                >
                   <div className="card-flyer">
                     <div className="text-box">
                       <div className="image-box">
