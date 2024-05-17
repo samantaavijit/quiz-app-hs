@@ -5,6 +5,7 @@ import axios from "../../utils/helpers/axios";
 import Loader from "../../utils/loader/Loader";
 import { adminConfig } from "../../utils/helpers/token.config";
 import _ from "lodash";
+import { BUCKET_DOMAIN } from "../../utils/helpers/Helper";
 
 export default function AddQuestion() {
   const [loading, setLoading] = useState(false);
@@ -33,10 +34,9 @@ export default function AddQuestion() {
   const getAllChatpers = () => {
     setLoading(true);
     axios
-      .get("/question/all-chapters")
+      .get("/question/all-chapters", adminConfig())
       .then((res) => {
         setLoading(false);
-
         if (res.data.success) {
           let { chapters } = res.data;
           setAllChapters(chapters);
@@ -259,7 +259,7 @@ export default function AddQuestion() {
         <img
           width={250}
           height={250}
-          src={selectedChapter.thumbnail}
+          src={BUCKET_DOMAIN + selectedChapter.thumbnail}
           alt="thumbnail"
         />
       </Col>

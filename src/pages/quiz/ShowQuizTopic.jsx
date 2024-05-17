@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { all_chapter } from "../../assets/images";
 import { config } from "../../utils/helpers/token.config";
+import { BUCKET_DOMAIN } from "../../utils/helpers/Helper";
 
 export default function ShowQuizTopic() {
   const navigate = useNavigate();
@@ -107,7 +108,10 @@ export default function ShowQuizTopic() {
                   <div className="card-flyer">
                     <div className="text-box">
                       <div className="image-box">
-                        <img src={item.thumbnail} alt={item.name} />
+                        <img
+                          src={BUCKET_DOMAIN + item.thumbnail}
+                          alt={item.name}
+                        />
                       </div>
                       <div className="text-container">
                         <h6>{item.name}</h6>

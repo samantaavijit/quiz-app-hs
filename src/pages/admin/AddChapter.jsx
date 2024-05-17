@@ -32,24 +32,6 @@ export default function AddChapter() {
     addNewChapter();
   };
 
-  const uploadImage = () => {
-    setLoading(true);
-
-    let formData = new FormData();
-    formData.append("image", image);
-
-    axios
-      .post("/question/upload-thumbnail", formData)
-      .then((res) => {
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.error(err);
-        toast.error("Something Went Wrong!!");
-      });
-  };
-
   const addNewChapter = () => {
     setLoading(true);
     formData.c_id = getChapterId(formData.name);
