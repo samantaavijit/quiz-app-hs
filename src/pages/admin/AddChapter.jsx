@@ -113,7 +113,7 @@ export default function AddChapter() {
             />
           </FloatingLabel>
 
-          <Button className="mt-5" type="submit">
+          <Button className="m-5" type="submit">
             Add
           </Button>
         </Form>

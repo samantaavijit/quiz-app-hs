@@ -19,6 +19,7 @@ import TopicWiseQuestion from "./pages/topicwisequestion/TopicWiseQuestion";
 import ShowQuizTopic from "./pages/quiz/ShowQuizTopic";
 import StartQuiz from "./pages/quiz/StartQuiz";
 import Users from "./pages/admin/Users";
+import Chapters from "./pages/admin/Chapters";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -103,6 +104,14 @@ export default function App() {
                     element={
                       <AdminLayout>
                         <AdminDashboard />
+                      </AdminLayout>
+                    }
+                  />
+                  <Route
+                    path="/chapters"
+                    element={
+                      <AdminLayout>
+                        <Chapters />
                       </AdminLayout>
                     }
                   />
