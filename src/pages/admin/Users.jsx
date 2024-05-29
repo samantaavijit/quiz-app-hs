@@ -65,7 +65,7 @@ export default function Users() {
     <div>
       {loading && <Loader />}
       <h1>Users</h1>
-      <Table striped bordered hove>
+      <Table striped bordered>
         <thead>
           <tr>
             <th>#</th>
