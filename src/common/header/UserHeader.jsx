@@ -50,6 +50,9 @@ export default function UserHeader() {
             >
               Quiz
             </NavLink>
+            {/* <NavLink className="nav-link" to="/mock-test" exact={`${true}`}>
+              Mock Test
+            </NavLink> */}
           </Nav>
           <Nav>
             {localStorage.getItem("token") ? (

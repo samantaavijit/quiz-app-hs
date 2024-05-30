@@ -20,6 +20,8 @@ import ShowQuizTopic from "./pages/quiz/ShowQuizTopic";
 import StartQuiz from "./pages/quiz/StartQuiz";
 import Users from "./pages/admin/Users";
 import Chapters from "./pages/admin/Chapters";
+import MockTest from "./pages/mocktest/MockTest";
+import AllMockTest from "./pages/admin/AllMockTest";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -89,6 +91,14 @@ export default function App() {
                 </UserLayout>
               }
             />
+            <Route
+              path="/mock-test"
+              element={
+                <UserLayout>
+                  <MockTest />
+                </UserLayout>
+              }
+            />
           </Route>
 
           {/* ONLY FOR ADMIN  */}
@@ -136,6 +146,14 @@ export default function App() {
                     element={
                       <AdminLayout>
                         <Users />
+                      </AdminLayout>
+                    }
+                  />
+                  <Route
+                    path="/all-mock-test"
+                    element={
+                      <AdminLayout>
+                        <AllMockTest />
                       </AdminLayout>
                     }
                   />

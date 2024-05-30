@@ -47,21 +47,21 @@ export default function AdminLeftPanel() {
               </NavLink>
             </Nav.Item>
 
-            {/* <Nav.Item as="li">
-              <NavLink to="/admin/add-chapter" exact={`${true}`}>
-                <span className="pro-icon-wrapper">
-                  <i className="fa-solid fa-gears" />
-                </span>
-                Add Chapter
-              </NavLink>
-            </Nav.Item> */}
-
             <Nav.Item as="li">
               <NavLink to="/admin/add-question" exact={`${true}`}>
                 <span className="pro-icon-wrapper">
                   <i className="fa-solid fa-gears" />
                 </span>
                 Add Question
+              </NavLink>
+            </Nav.Item>
+
+            <Nav.Item as="li">
+              <NavLink to="/admin/all-mock-test" exact={`${true}`}>
+                <span className="pro-icon-wrapper">
+                  <i className="fa-solid fa-gears" />
+                </span>
+                Mock Test
               </NavLink>
             </Nav.Item>
           </Nav>
