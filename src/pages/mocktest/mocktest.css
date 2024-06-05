@@ -1,0 +1,195 @@
+#mock_test {
+  text-align: center;
+  background: #f7f7f7;
+}
+#mock_test .container {
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+#mock_test a {
+  text-decoration: none;
+  outline: none;
+}
+#mock_test .card-flyer {
+  border-radius: 5px;
+  background: #ffffff;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+}
+
+#mock_test .card-flyer .text-box {
+  text-align: center;
+}
+
+#mock_test .card-flyer .text-box .text-container {
+  padding: 30px 18px;
+}
+
+#mock_test .card-flyer:hover {
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+  margin-top: 50px;
+}
+
+#mock_test .card-flyer .text-box p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+
+#mock_test .card-flyer .text-box h6 {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Roboto Black", sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+
+/* COMPLETE */
+
+#mock_test .complete {
+  position: relative; /* Make the complete div a relative container */
+  border-radius: 5px;
+  background: #ffffff;
+  margin-top: 50px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+}
+
+#mock_test .complete .label {
+  position: absolute;
+  bottom: 0; /* Position the label at the bottom of the div */
+  left: 0;
+  background-color: rgba(
+    212,
+    250,
+    244,
+    0.5
+  ); /* Transparent color for the label */
+  color: black;
+  padding: 5px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 0 0 5px 5px; /* Rounded corners only at the bottom */
+  width: 100%; /* Make the label span the full width of the div */
+  text-align: center;
+  box-sizing: border-box; /* Include padding in the element's width */
+}
+
+#mock_test .complete .text-box {
+  text-align: center;
+  opacity: 0.5; /* Make the background text semi-transparent */
+}
+
+#mock_test .complete .text-box .text-container {
+  padding: 30px 18px;
+}
+
+#mock_test .complete .text-box p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+
+#mock_test .complete .text-box h6 {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Roboto Black", sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+
+/* INPROGRESS */
+#mock_test a {
+  text-decoration: none;
+  outline: none;
+}
+#mock_test .inprogress {
+  position: relative; /* Make the complete div a relative container */
+  border-radius: 5px;
+  background: #ffffff;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+}
+
+#mock_test .inprogress .label {
+  position: absolute;
+  bottom: 0; /* Position the label at the bottom of the div */
+  left: 0;
+  background-color: rgba(
+    246,
+    196,
+    188,
+    0.5
+  ); /* Transparent color for the label */
+  color: black;
+  padding: 5px 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 0 0 5px 5px; /* Rounded corners only at the bottom */
+  width: 100%; /* Make the label span the full width of the div */
+  text-align: center;
+  box-sizing: border-box; /* Include padding in the element's width */
+}
+
+#mock_test .inprogress .text-box {
+  text-align: center;
+  /* opacity: 0.5; Make the background text semi-transparent */
+}
+
+#mock_test .inprogress .text-box .text-container {
+  padding: 30px 18px;
+}
+
+#mock_test .inprogress:hover {
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
+  margin-top: 50px;
+}
+
+#mock_test .inprogress .text-box p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+
+#mock_test .inprogress .text-box h6 {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Roboto Black", sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+
+/* dgsdgds */
+/* background-color: rgba(
+    212,
+    250,
+    244,
+    0.5
+  );  */
