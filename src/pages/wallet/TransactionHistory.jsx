@@ -145,7 +145,6 @@ export default function TransactionHistory() {
                 <td>{item._id}</td>
                 <td>{item.balance}</td>
                 <td>{moment(item.date).format("DD-MMM-YYYY")}</td>
-                {/* <td>{item.status ? "Success" : "Pending"}</td> */}
                 <td>
                   <h5>
                     <Badge bg={item.status ? "success" : "danger"}>
