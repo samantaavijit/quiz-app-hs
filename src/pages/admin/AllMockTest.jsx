@@ -153,11 +153,10 @@ export default function AllMockTest() {
                 })}
                 <option value="All Topics">All Topics</option>
               </Form.Select>
-
-              <Button type="submit" className="m-3">
-                Add
-              </Button>
             </Form.Group>
+            <Button type="submit" className="m-3">
+              Add
+            </Button>
           </Form>
         </Modal.Body>
       </Modal>
