@@ -3,7 +3,7 @@ import Loader from "../../utils/loader/Loader";
 import { adminConfig } from "../../utils/helpers/token.config";
 import { toast } from "react-toastify";
 import axios from "../../utils/helpers/axios";
-import { Dropdown, Image, Table } from "react-bootstrap";
+import { Badge, Dropdown, Image, Table } from "react-bootstrap";
 
 export default function Users() {
   const [loading, setLoading] = useState(false);
@@ -88,7 +88,12 @@ export default function Users() {
                     height="40"
                   />
                 </td>
-                <td>{item.name}</td>
+                <td>
+                  {item.name}
+                  <Badge className="ms-2" bg="success">
+                    {item.balance}
+                  </Badge>
+                </td>
                 <td>{item.email}</td>
                 <td>{item.active ? "Active" : "In active"}</td>
                 <td>
