@@ -53,6 +53,9 @@ export default function UserHeader() {
             {/* <NavLink className="nav-link" to="/mock-test" exact={`${true}`}>
               Mock Test
             </NavLink> */}
+            <NavLink className="nav-link" to="/transaction" exact={`${true}`}>
+              Payment
+            </NavLink>
           </Nav>
           <Nav>
             {localStorage.getItem("token") ? (

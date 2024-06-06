@@ -22,6 +22,8 @@ import Users from "./pages/admin/Users";
 import Chapters from "./pages/admin/Chapters";
 import MockTest from "./pages/mocktest/MockTest";
 import AllMockTest from "./pages/admin/AllMockTest";
+import StartMockTest from "./pages/mocktest/StartMockTest";
+import TransactionHistory from "./pages/wallet/TransactionHistory";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -96,6 +98,22 @@ export default function App() {
               element={
                 <UserLayout>
                   <MockTest />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/start-mock-test/:id"
+              element={
+                <UserLayout>
+                  <StartMockTest />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/transaction"
+              element={
+                <UserLayout>
+                  <TransactionHistory />
                 </UserLayout>
               }
             />
