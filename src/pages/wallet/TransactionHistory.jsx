@@ -60,6 +60,7 @@ export default function TransactionHistory() {
         if (res.data.success) {
           handleClose();
           toast.success(res.data.message);
+          getAllTransaction();
         } else {
           toast.error(res.data.message);
         }
