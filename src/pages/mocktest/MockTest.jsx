@@ -59,7 +59,7 @@ export default function MockTest() {
             return (
               <Col xs={12} sm={6} md={3} lg={3} key={key}>
                 <Link
-                  to={`/topic-wise-questions/${item.c_id}?topic_name=${item.name}`}
+                  to={`/start-mock-test/${item._id}?name=${item.name}&marks=${item.marks}&time=${item.time}`}
                 >
                   <div className="card-flyer">
                     <div className="text-box">

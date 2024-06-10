@@ -64,6 +64,15 @@ export default function AdminLeftPanel() {
                 Mock Test
               </NavLink>
             </Nav.Item>
+
+            <Nav.Item as="li">
+              <NavLink to="/admin/payments" exact={`${true}`}>
+                <span className="pro-icon-wrapper">
+                  <i className="fa-solid fa-gears" />
+                </span>
+                Payments
+              </NavLink>
+            </Nav.Item>
           </Nav>
         </div>
       </div>

@@ -24,6 +24,7 @@ import MockTest from "./pages/mocktest/MockTest";
 import AllMockTest from "./pages/admin/AllMockTest";
 import StartMockTest from "./pages/mocktest/StartMockTest";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
+import AllPayments from "./pages/admin/AllPayments";
 
 function ProtectRoute() {
   return localStorage.getItem("token") ? <Outlet /> : <Navigate to="/" />;
@@ -172,6 +173,14 @@ export default function App() {
                     element={
                       <AdminLayout>
                         <AllMockTest />
+                      </AdminLayout>
+                    }
+                  />
+                  <Route
+                    path="/payments"
+                    element={
+                      <AdminLayout>
+                        <AllPayments />
                       </AdminLayout>
                     }
                   />
