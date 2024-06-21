@@ -20,9 +20,11 @@ export default function TransactionHistory() {
   const [allTransaction, setAllTransaction] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [balance, setBalance] = useState("");
+  const [walletBalance, setWalletBalance] = useState(0);
 
   useEffect(() => {
     getAllTransaction();
+    getWalletBalance();
   }, []);
 
   const getAllTransaction = () => {
@@ -36,6 +38,27 @@ export default function TransactionHistory() {
           let { transaction } = res.data;
 
           setAllTransaction(transaction);
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+        toast.error("Something Went Wrong!!");
+      });
+  };
+
+  const getWalletBalance = () => {
+    setLoading(true);
+    axios
+      .get("/wallet/balance", config())
+      .then((res) => {
+        setLoading(false);
+
+        if (res.data.success) {
+          let { balance } = res.data;
+          setWalletBalance(balance);
         } else {
           toast.error(res.data.message);
         }
@@ -115,6 +138,13 @@ export default function TransactionHistory() {
       <Row className="mt-3">
         <Col>
           <h1>All Transactions</h1>
+          <br />
+          <h4>
+            Your Wallet Balance{" "}
+            <Badge bg={walletBalance > 0 ? "success" : "danger"}>
+              {walletBalance}
+            </Badge>
+          </h4>
         </Col>
         <Col>
           <Button
