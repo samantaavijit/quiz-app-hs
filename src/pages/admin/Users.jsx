@@ -3,12 +3,26 @@ import Loader from "../../utils/loader/Loader";
 import { adminConfig } from "../../utils/helpers/token.config";
 import { toast } from "react-toastify";
 import axios from "../../utils/helpers/axios";
-import { Badge, Dropdown, Image, Table } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Dropdown,
+  Form,
+  Image,
+  Modal,
+  Table,
+} from "react-bootstrap";
 
 export default function Users() {
   const [loading, setLoading] = useState(false);
 
   const [allUsers, setAllUsers] = useState([]);
+  const [editUserDetails, setEditUserDetails] = useState({
+    id: "",
+    name: "",
+    email: "",
+  });
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getAllUsers();
@@ -35,11 +49,6 @@ export default function Users() {
       });
   };
 
-  const handleAction = (action, userId) => {
-    // Handle the action here
-    console.log(`Performing ${action} action for user ${userId}`);
-  };
-
   const toogleUserStatus = (id) => {
     setLoading(true);
 
@@ -61,9 +70,86 @@ export default function Users() {
       });
   };
 
+  const handleClose = () => {
+    setShowModal(false);
+    setEditUserDetails({
+      id: "",
+      name: "",
+      email: "",
+    });
+  };
+
+  const updateUserDetails = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setShowModal(false);
+
+    axios
+      .put("/user/update-user-details", editUserDetails, adminConfig())
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          handleClose();
+          toast.success(res.data.message);
+          getAllUsers();
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+        toast.error("Something Went Wrong!!");
+      });
+  };
+
   return (
     <div>
       {loading && <Loader />}
+
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Update User Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={updateUserDetails}>
+            <Form.Group className="mb-3">
+              <Form.Label>Name *</Form.Label>
+              <Form.Control
+                name="name"
+                value={editUserDetails.name}
+                type="text"
+                placeholder="name"
+                onChange={(e) => {
+                  editUserDetails.name = e.target.value;
+                  setEditUserDetails({ ...editUserDetails });
+                }}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                name="email"
+                value={editUserDetails.email}
+                type="text"
+                placeholder="0"
+                readOnly
+              />
+            </Form.Group>
+            <Button type="submit" className="m-3">
+              Update
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
       <h1>Users</h1>
       <Table striped bordered>
         <thead>
@@ -104,9 +190,16 @@ export default function Users() {
                         {item.active ? "Disable" : "Enable"}
                       </Dropdown.Item>
                       <Dropdown.Item
-                        onClick={() => handleAction("delete", item.id)}
+                        onClick={() => {
+                          setShowModal(true);
+                          const { _id, name, email } = item;
+                          editUserDetails.id = _id;
+                          editUserDetails.name = name;
+                          editUserDetails.email = email;
+                          setEditUserDetails({ ...editUserDetails });
+                        }}
                       >
-                        Delete
+                        Edit
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
