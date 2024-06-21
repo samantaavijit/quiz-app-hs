@@ -181,7 +181,13 @@ export default function Users() {
                   </Badge>
                 </td>
                 <td>{item.email}</td>
-                <td>{item.active ? "Active" : "In active"}</td>
+                <td>
+                  <h5>
+                    <Badge bg={item.active ? "success" : "danger"}>
+                      {item.active ? "Active" : "In Active"}
+                    </Badge>
+                  </h5>
+                </td>
                 <td>
                   <Dropdown>
                     <Dropdown.Toggle id="dropdown-basic">...</Dropdown.Toggle>
