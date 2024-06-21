@@ -19,3 +19,13 @@
   min-width: 30%;
   min-height: 30%;
 }
+
+.approve_payment {
+  color: rgb(13, 214, 13);
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+  cursor: pointer;
+}

@@ -38,6 +38,7 @@ export default function AllPayments() {
 
   const approveTransaction = (item) => {
     let { balance, _id, user_id } = item;
+    let isAccept = window.prompt("Accept this payment?");
 
     const data = {
       balance,
@@ -45,10 +46,49 @@ export default function AllPayments() {
       user_id: user_id._id,
     };
 
-    return;
+    if (isAccept === null) return;
     setLoading(true);
 
-    axios.post("/wallet/approve-transaction", data);
+    axios
+      .post("/wallet/approve-transaction", data, adminConfig())
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          toast.success(res.data.message);
+          getAllTransaction();
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+        toast.error("Something Went Wrong!!");
+      });
+  };
+
+  const deleteTransaction = (id) => {
+    let isAccept = window.prompt("Delete this transaction?");
+    if (isAccept === null) return;
+
+    setLoading(true);
+
+    axios
+      .delete(`/wallet/transaction/${id}`, adminConfig())
+      .then((res) => {
+        setLoading(false);
+        if (res.data.success) {
+          toast.success(res.data.message);
+          getAllTransaction();
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+        toast.error("Something Went Wrong!!");
+      });
   };
 
   return (
@@ -93,12 +133,20 @@ export default function AllPayments() {
                 </td>
                 <td>
                   {!item.status && (
-                    <i
-                      className="fa-solid fa-check-double"
-                      onClick={() => {
-                        approveTransaction(item);
-                      }}
-                    />
+                    <>
+                      <i
+                        className="fa-solid fa-check-double approve_payment"
+                        onClick={() => {
+                          approveTransaction(item);
+                        }}
+                      />
+                      <i
+                        className="fa-regular fa-trash-can ms-2 delete"
+                        onClick={() => {
+                          deleteTransaction(item._id);
+                        }}
+                      />
+                    </>
                   )}
                 </td>
               </tr>
