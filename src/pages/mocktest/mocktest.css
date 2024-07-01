@@ -186,10 +186,11 @@
   color: #00acc1;
 }
 
-/* dgsdgds */
-/* background-color: rgba(
-    212,
-    250,
-    244,
-    0.5
-  );  */
+.progress,
+.progress-stacked {
+  --bs-progress-height: 0.2rem !important;
+}
+
+.options {
+  margin-top: 8px;
+}

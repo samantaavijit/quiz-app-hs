@@ -17,9 +17,11 @@ export default function StartMockTest() {
   const [isQuizStart, setIsQuizStart] = useState(false);
   const [questionPosition, setQuestionPosition] = useState(0);
   const [questions, setQuestions] = useState([]);
-  const [ansers, setAnsers] = useState([]);
+  const [usersAnsers, setUsersAnsers] = useState([]);
   const [seconds, setSeconds] = useState(time);
+
   const optionsSymbol = ["A", "B", "C", "D"];
+  const [clickedPosition, setClickedPosition] = useState(-1);
 
   let timer;
   let count = 0;
@@ -48,6 +50,13 @@ export default function StartMockTest() {
         if (res.data.success) {
           setIsQuizStart(true);
           let { mock_test } = res.data;
+
+          // Shuffle the array
+          for (let i = mock_test.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [mock_test[i], mock_test[j]] = [mock_test[j], mock_test[i]];
+          }
+
           setQuestions(mock_test);
           startTimer();
         } else {
@@ -75,22 +84,34 @@ export default function StartMockTest() {
     }, 1000); // Update every second
   };
 
-  const stopTimer = () => {};
-
   const getNextQuestion = () => {
     count++;
-    if (questions.length === count) {
+    if (questions.length + 1 < count) {
       // Question End And Submit the result
+      console.log("usersAnsers", usersAnsers);
       return;
     }
+    setClickedPosition(-1);
     setQuestionPosition(count);
     startTimer();
+  };
+
+  const onOptionClick = (selectAnswer) => {
+    let { _id, answer } = questions[questionPosition];
+
+    const data = {
+      quesion: _id,
+      correct_answer: answer,
+      option_select: selectAnswer,
+    };
+
+    usersAnsers.push(data);
+    setUsersAnsers(usersAnsers);
   };
 
   return (
     <div id="mock_test">
       {loading && <Loader />}
-      {/* {console.log("questionPosition", questionPosition)} */}
 
       {!isQuizStart ? (
         <Card className="m-3">
@@ -150,18 +171,23 @@ export default function StartMockTest() {
               </Card.Title>
 
               <div className="option-container">
-                {questions[questionPosition]?.options?.map((opt, key) => {
-                  return (
-                    <div className="learning-option " key={key}>
-                      <b> {optionsSymbol[key]})</b> {opt}
-                    </div>
-                  );
-                })}
+                {questions[questionPosition]?.options?.map((opt, key) => (
+                  <Button
+                    className="options"
+                    variant={`${
+                      clickedPosition === key ? "info" : "outline-info"
+                    } `}
+                    key={key}
+                    disabled={clickedPosition !== -1}
+                    onClick={() => {
+                      setClickedPosition(key);
+                      onOptionClick(opt);
+                    }}
+                  >
+                    <b> {optionsSymbol[key]})</b> {opt}
+                  </Button>
+                ))}
               </div>
-
-              <Button variant="primary" className="mb-2">
-                Submit
-              </Button>
             </Card.Body>
           </Card>
         </Container>
