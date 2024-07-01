@@ -19,11 +19,13 @@ export default function StartMockTest() {
   const [questions, setQuestions] = useState([]);
   const [usersAnsers, setUsersAnsers] = useState([]);
   const [seconds, setSeconds] = useState(time);
+  const [milliseconds, setMilliseconds] = useState(time * 1000);
 
   const optionsSymbol = ["A", "B", "C", "D"];
   const [clickedPosition, setClickedPosition] = useState(-1);
 
   let timer;
+  let milisecTimer;
   let count = 0;
 
   useEffect(() => {
@@ -59,6 +61,7 @@ export default function StartMockTest() {
 
           setQuestions(mock_test);
           startTimer();
+          startMiliSecondTimer();
         } else {
           toast.error(res.data.message);
         }
@@ -84,16 +87,29 @@ export default function StartMockTest() {
     }, 1000); // Update every second
   };
 
+  const startMiliSecondTimer = () => {
+    milisecTimer = setInterval(() => {
+      setMilliseconds((prevMilliseconds) => {
+        if (prevMilliseconds <= 100) {
+          clearInterval(milisecTimer); // Stop the timer when milliseconds reach 0
+          setMilliseconds(time * 1000);
+          return 0;
+        }
+        return prevMilliseconds - 100; // Decrease milliseconds by 100
+      });
+    }, 100); // Update every 100 milliseconds
+  };
+
   const getNextQuestion = () => {
     count++;
     if (questions.length + 1 < count) {
       // Question End And Submit the result
-      console.log("usersAnsers", usersAnsers);
       return;
     }
     setClickedPosition(-1);
     setQuestionPosition(count);
     startTimer();
+    startMiliSecondTimer();
   };
 
   const onOptionClick = (selectAnswer) => {
@@ -107,6 +123,11 @@ export default function StartMockTest() {
 
     usersAnsers.push(data);
     setUsersAnsers(usersAnsers);
+  };
+
+  const calculatePercentage = () => {
+    const percentage = ((time * 1000 - milliseconds) / (time * 1000)) * 100;
+    return percentage;
   };
 
   return (
@@ -160,9 +181,14 @@ export default function StartMockTest() {
         <Container>
           <Card className="mt-3">
             <ProgressBar>
-              <ProgressBar striped variant="success" now={35} key={1} />
-              <ProgressBar variant="warning" now={20} key={2} />
-              <ProgressBar striped variant="danger" now={10} key={3} />
+              {/* <ProgressBar striped variant="success" now={35} key={1} />
+              <ProgressBar variant="warning" now={20} key={2} /> */}
+              <ProgressBar
+                striped
+                variant="danger"
+                now={100 - calculatePercentage()}
+                key={3}
+              />
             </ProgressBar>
             <Card.Body>
               <div className="right-align">00:{seconds}</div>
@@ -175,7 +201,7 @@ export default function StartMockTest() {
                   <Button
                     className="options"
                     variant={`${
-                      clickedPosition === key ? "info" : "outline-info"
+                      clickedPosition === key ? "info" : "secondary"
                     } `}
                     key={key}
                     disabled={clickedPosition !== -1}
